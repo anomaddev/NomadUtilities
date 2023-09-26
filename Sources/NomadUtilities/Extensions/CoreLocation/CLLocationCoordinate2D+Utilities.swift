@@ -8,10 +8,14 @@
 import Foundation
 import CoreLocation
 
-public extension CLLocationCoordinate2D {
+extension CLLocationCoordinate2D {
+    
+    /// outputs the `CLLocationCoordinate2D` as a `CLLocation` object
+    public var location: CLLocation
+    { CLLocation(latitude: latitude, longitude: longitude)}
     
     /// Finds the haversine `Distance` to a specified coordinate, with a given radius in meters
-    func haversine(to coord: CLLocationCoordinate2D,
+    public func haversine(to coord: CLLocationCoordinate2D,
                    radius: Double = 6367444.7) -> Distance {
         let haversin = { (angle: Double) -> Double in
             return (1 - cos(angle)) / 2
@@ -35,12 +39,12 @@ public extension CLLocationCoordinate2D {
         return Distance(is: meters)
     }
     
-    var location: CLLocation
-    { CLLocation(latitude: latitude, longitude: longitude)}
 }
 
 extension Array where Element == CLLocationCoordinate2D {
-    public func minMax() -> ((Double, Double), (Double, Double)) {
+    
+    
+    public func minMax() -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
         // Lookup is done with one pass on array with only reduce
         return reduce((
             (.greatestFiniteMagnitude, -.greatestFiniteMagnitude),
