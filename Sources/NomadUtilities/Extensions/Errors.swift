@@ -12,25 +12,34 @@ extension Error {
     /// deep dive into what the error is all about
     public func explain() {
         print("===============================")
+        print(localizedDescription)
+        print()
         do { throw self }
-        catch let error as DecodingError {
-            switch error {
-            case .typeMismatch(let key, let value):
-                print("error \(key), value \(value) and ERROR: \(error.localizedDescription)")
-            case .valueNotFound(let key, let value):
-                print("error \(key), value \(value) and ERROR: \(error.localizedDescription)")
-            case .keyNotFound(let key, let value):
-                print("error \(key), value \(value) and ERROR: \(error.localizedDescription)")
-            case .dataCorrupted(let key):
-                print("error \(key), and ERROR: \(error.localizedDescription)")
-            default:
-                print("ERROR: \(error.localizedDescription)")
-            }
-        } catch {
-            print(error.localizedDescription)
-            print((error as NSError).code)
+        catch let decoding as DecodingError { decoding.read() }
+        catch {
+            print(localizedDescription)
+            print((self as NSError).code)
         }
+        print()
         print("===============================")
-        print("")
+    }
+}
+    
+extension DecodingError {
+    /// print out the type of decoding error
+    public func read() {
+        print("DECODING ERROR:")
+        switch self {
+        case .typeMismatch(let key, let value):
+            print("error \(key), value \(value) and Err: \(self.localizedDescription)")
+        case .valueNotFound(let key, let value):
+            print("error \(key), value \(value) and Err: \(self.localizedDescription)")
+        case .keyNotFound(let key, let value):
+            print("error \(key), value \(value) and Err: \(self.localizedDescription)")
+        case .dataCorrupted(let key):
+            print("error \(key), and Err: \(self.localizedDescription)")
+        default:
+            print("Err: \(self.localizedDescription)")
+        }
     }
 }
