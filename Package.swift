@@ -23,10 +23,12 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "NomadUtilities",
-            dependencies: []),
+            dependencies: [],
+            path: "Sources/NomadUtilities"),
         .target(
             name: "NomadFirebase",
-            dependencies: []),
+            dependencies: ["NomadUtilities"],
+            path: "Sources/NomadFirebase"),
         .testTarget(
             name: "NomadUtilitiesTests",
             dependencies: ["NomadUtilities"]),
