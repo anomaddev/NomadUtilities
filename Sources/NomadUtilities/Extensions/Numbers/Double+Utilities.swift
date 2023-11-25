@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Double {
+public extension Double {
     
     /// is an Int?
     var isInteger: Bool     { floor(self) == self }
@@ -32,14 +32,14 @@ extension Double {
     
     // MARK: Transforms
     /// Rounds the `Double` to a given decimal places
-    public func roundTo(places: Int,
-                        mode: FloatingPointRoundingRule! = .toNearestOrAwayFromZero) -> Double {
+    func roundTo(places: Int,
+                 mode: FloatingPointRoundingRule! = .toNearestOrAwayFromZero) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded(mode) / divisor
     }
     
     /// Truncates a `Double` to a given decimal places
-    public func truncate(places: Int) -> Double {
+    func truncate(places: Int) -> Double {
         let divisor = pow(10.0, Double(places))
         return (self * divisor).rounded(.towardZero) / divisor
     }

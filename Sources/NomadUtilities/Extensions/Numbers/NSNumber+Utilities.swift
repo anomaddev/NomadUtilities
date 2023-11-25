@@ -7,13 +7,13 @@
 
 import Foundation
 
-extension NSNumber {
+public extension NSNumber {
     
     /// outputs the `NSNumber` as a `Double`
-    public var double: Double
+    var double: Double
     { Double(truncating: self) }
     
     /// outputs the `NSNumber` as an `Int`
-    public var int: Int
+    var int: Int
     { Int(truncating: self) }
 }

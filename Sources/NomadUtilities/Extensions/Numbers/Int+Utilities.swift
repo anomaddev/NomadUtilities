@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Int
-extension Int {
+public extension Int {
     
     // MARK: - Facts
     var isEven: Bool { self % 2 == 0 }
@@ -78,7 +78,7 @@ extension Int {
     // MARK: - Time
 
     /// Takes a `Int` of 'Seconds' and returns Days, Hours, Minutes & Seconds
-    public func asComponents() -> (Int?, Int, Int, Int) {
+    func asComponents() -> (Int?, Int, Int, Int) {
         let days: Int? = 86400 < self ? (self / 86400) : nil
         let hours: Int = days != nil ? ((self % 86400) / 3600) : self / 3600
         

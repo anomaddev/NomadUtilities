@@ -16,7 +16,7 @@ extension CLLocationCoordinate2D {
     
     /// Finds the haversine `Distance` to a specified coordinate, with a given radius in meters
     public func haversine(to coord: CLLocationCoordinate2D,
-                   radius: Double = 6367444.7) -> Distance {
+                          radius: Double = 6367444.7) -> Distance {
         let haversin = { (angle: Double) -> Double in
             return (1 - cos(angle)) / 2
         }
