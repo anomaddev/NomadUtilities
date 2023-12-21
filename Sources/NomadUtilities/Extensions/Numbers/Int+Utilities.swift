@@ -76,6 +76,10 @@ public extension Int {
     }
     
     // MARK: - Time
+    
+    /// hours, minutes, seconds
+    func HMS() -> (Int, Int, Int)
+    { return (self / 3600, (self % 3600) / 60, (self % 3600) % 60) }
 
     /// Takes a `Int` of 'Seconds' and returns Days, Hours, Minutes & Seconds
     func asComponents() -> (Int?, Int, Int, Int) {
