@@ -99,7 +99,11 @@ public class Distance {
                         whitespace: Bool! = true,
                         truncate: Int! = 2) -> String {
         let value = converted(to: unit ?? _unit)
-        let num = value.value.truncate(places: truncate)
+        let num: String = {
+            if truncate == 0 { return "\(value.value.rounded().int)" }
+            else { return "\(value.value.truncate(places: truncate))" }
+        }()
+        
         let u = value.unit
         return "\(num)\(u.label(with: styled, whitespace: whitespace))"
     }

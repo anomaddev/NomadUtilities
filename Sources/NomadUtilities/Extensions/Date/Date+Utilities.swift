@@ -16,4 +16,10 @@ extension Date {
     /// Date represented in seconds rounded to an `Integer`
     public var seconds: Int
     { self.since1970.int }
+    
+    /// The nTh day of the year
+    public var nthDay: Int! {
+        return Calendar.current
+            .ordinality(of: .day, in: .year, for: self)!
+    }
 }
