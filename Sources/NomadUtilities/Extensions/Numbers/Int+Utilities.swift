@@ -9,6 +9,10 @@ import Foundation
 
 // MARK: - Int
 public extension Int {
+
+    /// prints the `Int` to the console
+    func debug()
+    { print(self) }
     
     // MARK: - Facts
     var isEven: Bool { self % 2 == 0 }

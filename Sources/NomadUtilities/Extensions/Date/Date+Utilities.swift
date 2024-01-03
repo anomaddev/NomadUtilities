@@ -8,6 +8,11 @@
 import Foundation
 
 extension Date {
+    /// prints the `Date` to the console
+    ///
+    /// - todo: change to seletive format
+    func debug()
+    { print(self) }
     
     /// Date represented in seconds as a `TimeInterval` aka `Double`
     public var since1970: TimeInterval

@@ -9,6 +9,10 @@ import Foundation
 
 public extension Double {
     
+    /// prints the `Double` to the console
+    func debug()
+    { print(self) }
+    
     /// is an Int?
     var isInteger: Bool     { floor(self) == self }
     

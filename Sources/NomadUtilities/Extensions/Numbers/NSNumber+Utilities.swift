@@ -9,6 +9,10 @@ import Foundation
 
 public extension NSNumber {
     
+    /// prints the `NSNumber` to the console
+    func debug()
+    { print(self) }
+    
     /// outputs the `NSNumber` as a `Double`
     var double: Double
     { Double(truncating: self) }

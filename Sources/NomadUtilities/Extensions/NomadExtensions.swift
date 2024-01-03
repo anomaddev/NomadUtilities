@@ -19,3 +19,16 @@ extension Encodable {
         return output
     }
 }
+
+extension Encodable {
+    /// Convenience function for object which adheres to Codable to compile the JSON
+    func compile () -> [String: Any] {
+        guard let data = try? JSONEncoder().encode(self) else {
+            print("Couldn't encode the given object")
+            preconditionFailure("Couldn't encode the given object")
+        }
+        return (try? JSONSerialization
+            .jsonObject(with: data, options: .allowFragments))
+        .flatMap { $0 as? [String: Any] }!
+    }
+}

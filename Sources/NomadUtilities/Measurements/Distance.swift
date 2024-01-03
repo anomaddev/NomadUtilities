@@ -68,7 +68,14 @@ public class Distance {
         originalUnit = _unit
     }
     
-    /// Helpers
+    // MARK: - Helpers
+    
+    /// prints the `Distance` to the console
+    ///
+    /// - todo: Add selective format
+    func debug()
+    { print(self) }
+    
     private var baseline: Double
     { return _value.doubleValue * _unit.multiplier }
     
@@ -174,6 +181,7 @@ public class Distance {
 }
 
 public extension Int {
+    
     /// Distance
     var feet: Distance
     { Distance(is: self, in: .feet) }
