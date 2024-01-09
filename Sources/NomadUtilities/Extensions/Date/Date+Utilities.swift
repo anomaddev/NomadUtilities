@@ -27,4 +27,11 @@ extension Date {
         return Calendar.current
             .ordinality(of: .day, in: .year, for: self)!
     }
+    
+    /// The nTh day of the year in the specified timezone
+    public func nthDayIn(timezone: TimeZone) -> Int! {
+        var calendar = Calendar.current
+        calendar.timeZone = timezone
+        return calendar.ordinality(of: .day, in: .year, for: self)!
+    }
 }
