@@ -8,6 +8,11 @@
 import Foundation
 
 extension Date {
+    
+    /// Returns the current `Date`
+    public static var current: Date
+    { Date() }
+    
     /// prints the `Date` to the console
     ///
     /// - todo: change to seletive format
