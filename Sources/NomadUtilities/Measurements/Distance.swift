@@ -107,7 +107,7 @@ public class Distance {
                         truncate: Int! = 2) -> String {
         let value = converted(to: unit ?? _unit)
         let num: String = {
-            if truncate == 0 { return "\(value.value.rounded().int)" }
+            if truncate == 0 { return "\(value.value.rounded().int.stringify)" }
             else { return "\(value.value.truncate(places: truncate))" }
         }()
         
