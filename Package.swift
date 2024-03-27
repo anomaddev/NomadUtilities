@@ -11,6 +11,10 @@ let package = Package(
             name: "NomadUtilities",
             targets: ["NomadUtilities"]),
         .library(
+            name: "NomadUI",
+            targets: ["NomadUI"]
+        ),
+        .library(
             name: "NomadFirebase",
             targets: ["NomadFirebase"]),
     ],
@@ -25,6 +29,10 @@ let package = Package(
             name: "NomadUtilities",
             dependencies: [],
             path: "Sources/NomadUtilities"),
+        .target(
+            name: "NomadUI",
+            dependencies: ["NomadUtilities"],
+            path: "Sources/NomadUI"),
         .target(
             name: "NomadFirebase",
             dependencies: ["NomadUtilities"],
