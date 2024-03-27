@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UITheme: NSObject {
+public class UITheme: NSObject {
     
     public static var main: UITheme = UITheme()
     
