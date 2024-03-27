@@ -31,20 +31,17 @@ let package = Package(
             name: "NomadUtilities",
             dependencies: [
                 .product(name: "UIColorHexSwift", package: "UIColor-Hex-Swift"),
-            ],
-            path: "Sources/NomadUtilities"),
+            ]),
         .target(
             name: "NomadUI",
             dependencies: [
                 "NomadUtilities",
                 .product(name: "UIColorHexSwift", package: "UIColor-Hex-Swift"),
                 .product(name: "FAPanels", package: "FAPanels")
-            ],
-            path: "Sources/NomadUI"),
+            ]),
         .target(
             name: "NomadFirebase",
-            dependencies: ["NomadUtilities"],
-            path: "Sources/NomadFirebase"),
+            dependencies: ["NomadUtilities"]),
         .testTarget(
             name: "NomadUtilitiesTests",
             dependencies: ["NomadUtilities"]),
