@@ -12,8 +12,8 @@ import UIColorHexSwift
 
 public class UIPalette {
     
-    static var defaultLight: UIPalette = .init()
-    static var defaultDark: UIPalette = .init(
+    public static var defaultLight: UIPalette = .init()
+    public static var defaultDark: UIPalette = .init(
         adaptive:   .dark,
         primary:    .init(color: "#D0BCFF", onColor: "#381E72", containerColor: "#4F378B", onContainerColor: "#EADDFF"),
         secondary:  .init(color: "#CCC2DC", onColor: "#332D41", containerColor: "#4A4458", onContainerColor: "#E8DEF8"),
@@ -23,17 +23,17 @@ public class UIPalette {
         neutral:    .init(outline: "#938F99", surfaceColor: "#49454F", onSurfaceColor: "#CAC4D0")
     )
     
-    var adaptive: Adaptive
+    public var adaptive: Adaptive
     
-    var primary:    PrimaryColor
-    var secondary:  PrimaryColor
-    var tertiary:   PrimaryColor
-    var error:      PrimaryColor
+    public var primary:    PrimaryColor
+    public var secondary:  PrimaryColor
+    public var tertiary:   PrimaryColor
+    public var error:      PrimaryColor
     
-    var background: BackgroundColor
-    var neutral:    NeutralColor
+    public var background: BackgroundColor
+    public var neutral:    NeutralColor
     
-    init(
+    public init(
         adaptive: Adaptive =        .light,
         primary: PrimaryColor =     .init(color: "#6750A4", onColor: "#FFFFFF", containerColor: "#EADDFF", onContainerColor: "#21005D"),
         secondary: PrimaryColor =   .init(color: "#625B71", onColor: "#FFFFFF", containerColor: "#E8DEF8", onContainerColor: "#1D192B"),
@@ -55,12 +55,12 @@ public class UIPalette {
 
 public struct PrimaryColor {
     
-    var color: UIColor
-    var onColor: UIColor
-    var containerColor: UIColor
-    var onContainerColor: UIColor
+    public var color: UIColor
+    public var onColor: UIColor
+    public var containerColor: UIColor
+    public var onContainerColor: UIColor
     
-    init(
+    public init(
         color: String,
         onColor: String,
         containerColor: String,
@@ -75,12 +75,12 @@ public struct PrimaryColor {
 
 public struct BackgroundColor {
 
-    var color: UIColor
-    var onColor: UIColor
-    var surface: UIColor
-    var onSurface: UIColor
+    public var color: UIColor
+    public var onColor: UIColor
+    public var surface: UIColor
+    public var onSurface: UIColor
  
-    init(
+    public init(
         color: String,
         onColor: String,
         surface: String,
@@ -95,11 +95,11 @@ public struct BackgroundColor {
 
 public struct NeutralColor {
     
-    var outline: UIColor
-    var surfaceColor: UIColor
-    var onSurfaceColor: UIColor
+    public var outline: UIColor
+    public var surfaceColor: UIColor
+    public var onSurfaceColor: UIColor
     
-    init(
+    public init(
         outline: String,
         surfaceColor: String,
         onSurfaceColor: String
