@@ -10,7 +10,7 @@ import UIColorHexSwift
 
 // TODO: Make optional to fallback on default values if not specified
 
-class UIPalette {
+public class UIPalette {
     
     static var defaultLight: UIPalette = .init()
     static var defaultDark: UIPalette = .init(
@@ -53,7 +53,7 @@ class UIPalette {
     }
 }
 
-struct PrimaryColor {
+public struct PrimaryColor {
     
     var color: UIColor
     var onColor: UIColor
@@ -73,7 +73,7 @@ struct PrimaryColor {
     }
 }
 
-struct BackgroundColor {
+public struct BackgroundColor {
 
     var background: UIColor
     var onBackground: UIColor
@@ -93,7 +93,7 @@ struct BackgroundColor {
     }
 }
 
-struct NeutralColor {
+public struct NeutralColor {
     
     var outline: UIColor
     var surfaceColor: UIColor
@@ -110,7 +110,40 @@ struct NeutralColor {
     }
 }
 
-enum Adaptive {
+public enum Adaptive {
     case light
     case dark
+}
+
+public extension UIColor {
+    
+    /// Returns the current palette primary color
+    var primary: PrimaryColor {
+        UITheme.main.active().primary
+    }
+    
+    /// Returns the current palette secondary color
+    var secondary: PrimaryColor {
+        UITheme.main.active().secondary
+    }
+    
+    /// Returns the current palette tertiary color
+    var tertiary: PrimaryColor {
+        UITheme.main.active().tertiary
+    }
+    
+    /// Returns the current palette error color
+    var error: PrimaryColor {
+        UITheme.main.active().error
+    }
+    
+    /// Returns the current palette background color
+    var background: BackgroundColor {
+        UITheme.main.active().background
+    }
+    
+    /// Returns the current palette neutral color
+    var neutral: NeutralColor {
+        UITheme.main.active().neutral
+    }
 }
