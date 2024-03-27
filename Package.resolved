@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "fapanels",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fahidattique55/FAPanels.git",
+      "state" : {
+        "revision" : "227507ae2319408261e9a3c292007806452a429b",
+        "version" : "2.0.1"
+      }
+    },
+    {
       "identity" : "uicolor-hex-swift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/yeahdongcn/UIColor-Hex-Swift.git",

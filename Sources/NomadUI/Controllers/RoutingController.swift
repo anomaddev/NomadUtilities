@@ -6,9 +6,15 @@
 //
 
 import UIKit
+import FAPanels
 
-class RoutingController {
+class RoutingController: FAPanelController {
     
+    public var palatte: UIPalette = UITheme.main.active()
     
-    
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = palatte.background.color
+        
+    }
 }
