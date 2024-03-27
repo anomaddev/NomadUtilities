@@ -29,12 +29,15 @@ let package = Package(
         .target(
             name: "NomadUtilities",
             dependencies: [
-                "UIColor-Hex-Swift"
+                .product(name: "UIColorHexSwift", package: "UIColor-Hex-Swift"),
             ],
             path: "Sources/NomadUtilities"),
         .target(
             name: "NomadUI",
-            dependencies: ["NomadUtilities"],
+            dependencies: [
+                "NomadUtilities",
+                .product(name: "UIColorHexSwift", package: "UIColor-Hex-Swift"),
+            ],
             path: "Sources/NomadUI"),
         .target(
             name: "NomadFirebase",
