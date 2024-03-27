@@ -8,7 +8,7 @@
 import UIKit
 import FAPanels
 
-class RoutingController: FAPanelController {
+open class RoutingController: FAPanelController {
     
     public var palatte: UIPalette = UITheme.main.active()
     
