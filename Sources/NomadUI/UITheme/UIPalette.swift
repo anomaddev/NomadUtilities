@@ -115,35 +115,35 @@ public enum Adaptive {
     case dark
 }
 
-public extension UIColor {
+extension UIColor {
     
     /// Returns the current palette primary color
-    var primary: PrimaryColor {
+    public var primary: PrimaryColor {
         UITheme.main.active().primary
     }
     
     /// Returns the current palette secondary color
-    var secondary: PrimaryColor {
+    public var secondary: PrimaryColor {
         UITheme.main.active().secondary
     }
     
     /// Returns the current palette tertiary color
-    var tertiary: PrimaryColor {
+    public var tertiary: PrimaryColor {
         UITheme.main.active().tertiary
     }
     
     /// Returns the current palette error color
-    var error: PrimaryColor {
+    public var error: PrimaryColor {
         UITheme.main.active().error
     }
     
     /// Returns the current palette background color
-    var background: BackgroundColor {
+    public var background: BackgroundColor {
         UITheme.main.active().background
     }
     
     /// Returns the current palette neutral color
-    var neutral: NeutralColor {
+    public var neutral: NeutralColor {
         UITheme.main.active().neutral
     }
 }
