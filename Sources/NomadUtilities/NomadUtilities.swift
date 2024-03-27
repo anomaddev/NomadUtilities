@@ -1,4 +1,4 @@
 
-class NomadUtilities {
+public class NomadUtilities {
     
 }

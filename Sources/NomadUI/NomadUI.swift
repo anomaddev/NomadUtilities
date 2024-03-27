@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NomadUI {
+public class NomadUI {
     
     
     
