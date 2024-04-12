@@ -18,6 +18,8 @@ public extension Double {
     
     /// Base Conversions
     var int: Int            { Int(self) }
+    var int64: Int64        { Int64(self) }
+    
     var float: Float        { Float(self) }
     var cgfloat: CGFloat    { CGFloat(self) }
     var number: NSNumber    { NSNumber(value: self) }
