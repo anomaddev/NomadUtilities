@@ -103,6 +103,16 @@ public extension Int {
 public extension Int64 {
     var int: Int
     { Int(self) }
+    
+    // MARK: - Stringify's
+    var string: String
+    { "\(self)" }
+}
+
+public extension UInt64 {
+    // MARK: - Stringify's
+    var string: String
+    { "\(self)" }
 }
 
 // MARK: - UInt
