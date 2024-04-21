@@ -11,8 +11,8 @@ import Foundation
 public extension Int {
 
     /// prints the `Int` to the console
-    func debug()
-    { print(self) }
+    func debug(_ leadin: String? = nil) -> Int
+    { print("\(leadin == nil ? "" : leadin!)\(self)"); return self }
     
     // MARK: - Facts
     var isEven: Bool { self % 2 == 0 }
