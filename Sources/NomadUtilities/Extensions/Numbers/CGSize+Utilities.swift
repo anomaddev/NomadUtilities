@@ -13,7 +13,7 @@ extension CGSize {
         return CGSize(width: size, height: size)
     }
     
-    static func rectangle(_ x: CGFloat,_ y: CGFloat) -> CGSize {
+    public static func rect(_ x: CGFloat,_ y: CGFloat) -> CGSize {
         return CGSize(width: x, height: y)
     }
 }
