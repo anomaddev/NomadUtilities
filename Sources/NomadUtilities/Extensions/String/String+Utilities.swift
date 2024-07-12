@@ -5,7 +5,8 @@
 //  Created by Justin Ackermann on 9/26/23.
 //
 
-import Foundation
+import UIKit
+import UIColorHexSwift
 
 extension String {
     
@@ -17,6 +18,9 @@ extension String {
     public func attributed(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString
     { NSAttributedString(string: self, attributes: attributes) }
     
+    public func mutable(attributes: [NSAttributedString.Key: Any]) -> NSMutableAttributedString
+    { NSMutableAttributedString(string: self, attributes: attributes) }
+    
     /// string to attributed with defaults
     public var attributed: NSAttributedString
     { NSAttributedString(string: self) }
@@ -24,6 +28,12 @@ extension String {
     /// string to mutable attributed with defaults
     public var mutableAttributed: NSMutableAttributedString
     { NSMutableAttributedString(string: self) }
+    
+    // MARK: - Type Conversions
+    
+    /// outputs a `String` hex code as a `UIColor`
+    public var color: UIColor
+    { UIColor(self) }
 }
 
 extension Substring.SubSequence {
@@ -37,3 +47,9 @@ extension Substring.SubSequence {
     { print(self) }
 }
 
+// MARK: - NSAttributedString & NSMutableAttributedString
+extension NSMutableAttributedString {
+    public func add(_ attributed: NSAttributedString) {
+        append(attributed)
+    }
+}
