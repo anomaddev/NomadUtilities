@@ -37,3 +37,9 @@ extension Sequence {
         }
     }
 }
+
+extension Array {
+    public func safeIndex(_ index: Int) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
