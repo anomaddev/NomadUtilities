@@ -5,9 +5,11 @@
 //  Created by Justin Ackermann on 2/21/25.
 //
 
+import Foundation
+
 extension ClosedRange where Bound == Int {
     /// Returns an array of `count` equally spaced values from the range.
-    func equalSpacing(count: Int, include: (start: Bool, end: Bool)! = (true, true)) -> [Int] {
+    public func equalSpacing(count: Int, include: (start: Bool, end: Bool)! = (true, true)) -> [Int] {
         guard count > 1 else { return [lowerBound] } // If only one, return start
         
         let step = Double(upperBound - lowerBound) / Double(count - 1) // Compute step
