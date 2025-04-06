@@ -14,6 +14,14 @@ extension String {
     public func debug()
     { print(self) }
     
+    // MARK: - Checks
+    public func isValidEmail() -> Bool {
+        let emailRegex = #"^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"#
+        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: self)
+    }
+    
+    // MARK: - Attributed Strings
+    
     /// string to attributed with attributes
     public func attributed(attributes: [NSAttributedString.Key: Any]) -> NSAttributedString
     { NSAttributedString(string: self, attributes: attributes) }

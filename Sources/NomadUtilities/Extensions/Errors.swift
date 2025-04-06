@@ -11,7 +11,7 @@ extension Error {
     
     /// deep dive into what the error is all about
     public func explain() {
-        print("===============================")
+        print("=========INTERNAL EXPLAIN=========")
         print(localizedDescription)
         print()
         do { throw self }
@@ -21,7 +21,7 @@ extension Error {
             print((self as NSError).code)
         }
         print()
-        print("===============================")
+        print("==================================")
         print()
     }
 }

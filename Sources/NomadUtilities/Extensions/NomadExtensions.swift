@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension Encodable {
     
@@ -30,5 +31,36 @@ extension Encodable {
         return (try? JSONSerialization
             .jsonObject(with: data, options: .allowFragments))
         .flatMap { $0 as? [String: Any] }!
+    }
+}
+
+// MARK: Controllers
+public extension UINavigationController {
+    func pushToViewController(_ viewController: UIViewController, animated:Bool = true, completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.pushViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+    
+    func popViewController(animated:Bool = true, completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.popViewController(animated: animated)
+        CATransaction.commit()
+    }
+    
+    func popToViewController(_ viewController: UIViewController, animated:Bool = true, completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.popToViewController(viewController, animated: animated)
+        CATransaction.commit()
+    }
+    
+    func popToRootViewController(animated:Bool = true, completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.popToRootViewController(animated: animated)
+        CATransaction.commit()
     }
 }

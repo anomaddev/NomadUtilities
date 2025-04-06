@@ -13,9 +13,15 @@ public class NomadUtilities {
     /// Shared instance of `NomadUtilities`
     public static let shared = NomadUtilities()
     
-    
+    /// delay the program execution
     public static func delay(_ int: TimeInterval, after: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + int, execute: after)
+    }
+    
+    /// delay the program execution asynchronously
+    public static func delay(_ seconds: Double) async throws {
+        let nanoseconds = UInt64(seconds * 1_000_000_000)
+        try await Task.sleep(nanoseconds: nanoseconds)
     }
     
     /// The current environment of the app, defaults to `.development`

@@ -189,8 +189,13 @@ public extension Int {
     var meters: Distance
     { Distance(is: self, in: .meters) }
     
+    /// A `Distance` with the unit `.kilometers`
     var kilometers: Distance
     { Distance(is: self, in: .kilometers) }
+    
+    /// `Double` value in kilometers
+    var km: Double
+    { self.double * 1000 }
     
     var miles: Distance
     { Distance(is: self, in: .miles) }
