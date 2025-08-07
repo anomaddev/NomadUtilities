@@ -19,10 +19,13 @@ public extension Int {
     var isOdd: Bool { !isEven }
     
     // MARK: - Base Conversions
-    var double: Double      { Double(self) }
-    var float: Float        { Float(self) }
-    var cgfloat: CGFloat    { CGFloat(self) }
-    var number: NSNumber    { NSNumber(value: self) }
+    var double: Double   { Double(self) }
+    var float: Float     { Float(self) }
+    var cgfloat: CGFloat { CGFloat(self) }
+    var number: NSNumber { NSNumber(value: self) }
+    
+    var int34: Int32     { Int32(self) }
+    var int64: Int64     { Int64(self) }
     
     // MARK: - Date Conversions
     var date: Date
@@ -113,6 +116,13 @@ public extension UInt64 {
     // MARK: - Stringify's
     var string: String
     { "\(self)" }
+    
+    // MARK: - Time
+    static func seconds(_ seconds: UInt64) -> UInt64
+    { seconds * 1_000_000_000 }
+    
+    static func seconds(_ seconds: Double) -> UInt64
+    { UInt64(seconds * 1_000_000_000) }
 }
 
 // MARK: - UInt
