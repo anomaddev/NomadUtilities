@@ -41,19 +41,28 @@ extension CLLocationCoordinate2D {
     
 }
 
+struct CoordinateBounds {
+    var minLat = Double.greatestFiniteMagnitude
+    var maxLat = -Double.greatestFiniteMagnitude
+    var minLng = Double.greatestFiniteMagnitude
+    var maxLng = -Double.greatestFiniteMagnitude
+}
+
 extension Array where Element == CLLocationCoordinate2D {
-    
-    
-    public func minMax() -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
-        // Lookup is done with one pass on array with only reduce
-        return reduce((
-            (.greatestFiniteMagnitude, -.greatestFiniteMagnitude),
-            (.greatestFiniteMagnitude, -.greatestFiniteMagnitude)
-        )) { r, c in
-            (
-                (Swift.min(c.latitude,r.0.0), Swift.max(c.latitude, r.0.1)),
-                (Swift.min(c.longitude, r.1.0), Swift.max(c.longitude, r.1.1))
-            )
+
+    public func minMax()
+    -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
+
+        let bounds = reduce(CoordinateBounds()) { r, c in
+            var r = r
+            r.minLat = Swift.min(r.minLat, c.latitude)
+            r.maxLat = Swift.max(r.maxLat, c.latitude)
+            r.minLng = Swift.min(r.minLng, c.longitude)
+            r.maxLng = Swift.max(r.maxLng, c.longitude)
+            return r
         }
+
+        return ((bounds.minLat, bounds.maxLat),
+                (bounds.minLng, bounds.maxLng))
     }
 }
