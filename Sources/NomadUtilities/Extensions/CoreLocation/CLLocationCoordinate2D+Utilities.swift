@@ -41,28 +41,28 @@ extension CLLocationCoordinate2D {
     
 }
 
-struct CoordinateBounds {
-    var minLat = Double.greatestFiniteMagnitude
-    var maxLat = -Double.greatestFiniteMagnitude
-    var minLng = Double.greatestFiniteMagnitude
-    var maxLng = -Double.greatestFiniteMagnitude
-}
-
 extension Array where Element == CLLocationCoordinate2D {
 
-    public func minMax()
-    -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
+    /// Returns the bounding latitudes and longitudes in a single pass.
+    ///
+    /// Uses a plain loop instead of `reduce` + `min`/`max` so Swift does not
+    /// fail to type-check the expression under recent Xcode toolchains.
+    public func minMax() -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
+        var minLat = Double.greatestFiniteMagnitude
+        var maxLat = -Double.greatestFiniteMagnitude
+        var minLng = Double.greatestFiniteMagnitude
+        var maxLng = -Double.greatestFiniteMagnitude
 
-        let bounds = reduce(CoordinateBounds()) { r, c in
-            var r = r
-            r.minLat = Swift.min(r.minLat, c.latitude)
-            r.maxLat = Swift.max(r.maxLat, c.latitude)
-            r.minLng = Swift.min(r.minLng, c.longitude)
-            r.maxLng = Swift.max(r.maxLng, c.longitude)
-            return r
+        for coordinate in self {
+            let lat = Double(coordinate.latitude)
+            let lng = Double(coordinate.longitude)
+
+            if lat < minLat { minLat = lat }
+            if lat > maxLat { maxLat = lat }
+            if lng < minLng { minLng = lng }
+            if lng > maxLng { maxLng = lng }
         }
 
-        return ((bounds.minLat, bounds.maxLat),
-                (bounds.minLng, bounds.maxLng))
+        return ((minLat, maxLat), (minLng, maxLng))
     }
 }
