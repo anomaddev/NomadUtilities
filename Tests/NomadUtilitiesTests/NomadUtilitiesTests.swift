@@ -13,29 +13,30 @@ final class CLLocationCoordinate2DUtilitiesTests: XCTestCase {
 
         let bounds = coordinates.minMax()
 
-        XCTAssertEqual(bounds.0.minLat, -5)
-        XCTAssertEqual(bounds.0.maxLat, 15)
-        XCTAssertEqual(bounds.1.minLng, -10)
-        XCTAssertEqual(bounds.1.maxLng, 40)
+        XCTAssertEqual(bounds.minLat, -5)
+        XCTAssertEqual(bounds.maxLat, 15)
+        XCTAssertEqual(bounds.minLng, -10)
+        XCTAssertEqual(bounds.maxLng, 40)
     }
 
     func testMinMaxEmptyArrayUsesSentinelValues() {
         let bounds = [CLLocationCoordinate2D]().minMax()
 
-        XCTAssertEqual(bounds.0.minLat, Double.greatestFiniteMagnitude)
-        XCTAssertEqual(bounds.0.maxLat, -Double.greatestFiniteMagnitude)
-        XCTAssertEqual(bounds.1.minLng, Double.greatestFiniteMagnitude)
-        XCTAssertEqual(bounds.1.maxLng, -Double.greatestFiniteMagnitude)
+        XCTAssertEqual(bounds, .empty)
+        XCTAssertEqual(bounds.minLat, Double.greatestFiniteMagnitude)
+        XCTAssertEqual(bounds.maxLat, -Double.greatestFiniteMagnitude)
+        XCTAssertEqual(bounds.minLng, Double.greatestFiniteMagnitude)
+        XCTAssertEqual(bounds.maxLng, -Double.greatestFiniteMagnitude)
     }
 
     func testMinMaxSingleCoordinate() {
         let coordinate = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
         let bounds = [coordinate].minMax()
 
-        XCTAssertEqual(bounds.0.minLat, 37.7749)
-        XCTAssertEqual(bounds.0.maxLat, 37.7749)
-        XCTAssertEqual(bounds.1.minLng, -122.4194)
-        XCTAssertEqual(bounds.1.maxLng, -122.4194)
+        XCTAssertEqual(bounds.minLat, 37.7749)
+        XCTAssertEqual(bounds.maxLat, 37.7749)
+        XCTAssertEqual(bounds.minLng, -122.4194)
+        XCTAssertEqual(bounds.maxLng, -122.4194)
     }
 
     func testHaversineDistanceIsZeroForSamePoint() {
