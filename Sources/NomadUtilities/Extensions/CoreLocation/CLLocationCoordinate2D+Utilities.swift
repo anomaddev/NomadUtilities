@@ -75,10 +75,10 @@ extension Array where Element == CLLocationCoordinate2D {
 
     /// Returns the bounding latitudes and longitudes in a single pass.
     ///
-    /// Implemented as a named struct plus a plain loop. Nested labeled tuples
-    /// and `reduce` + `min`/`max` have caused Swift to fail with
-    /// "failed to produce diagnostic for expression" on recent Xcode toolchains.
-    public func minMax() -> CoordinateBounds {
+    /// Uses a named accumulator and a plain loop. The previous `reduce` +
+    /// `min`/`max` expression fails type checking on recent Xcode toolchains
+    /// with "failed to produce diagnostic for expression".
+    public func minMax() -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
         var bounds = CoordinateBounds.empty
 
         for coordinate in self {
@@ -91,6 +91,8 @@ extension Array where Element == CLLocationCoordinate2D {
             if lng > bounds.maxLng { bounds.maxLng = lng }
         }
 
-        return bounds
+        let latitudes = (minLat: bounds.minLat, maxLat: bounds.maxLat)
+        let longitudes = (minLng: bounds.minLng, maxLng: bounds.maxLng)
+        return (latitudes, longitudes)
     }
 }
