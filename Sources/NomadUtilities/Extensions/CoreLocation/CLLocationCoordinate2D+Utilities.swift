@@ -1,12 +1,42 @@
 //
 //  CLLocationCoordinate2D+Utilities.swift
-//  
+//
 //
 //  Created by Justin Ackermann on 11/28/22.
 //
 
 import Foundation
 import CoreLocation
+
+/// Bounding latitudes and longitudes for a collection of coordinates.
+public struct CoordinateBounds: Equatable, Sendable {
+    public var minLat: Double
+    public var maxLat: Double
+    public var minLng: Double
+    public var maxLng: Double
+
+    public init(
+        minLat: Double,
+        maxLat: Double,
+        minLng: Double,
+        maxLng: Double
+    ) {
+        self.minLat = minLat
+        self.maxLat = maxLat
+        self.minLng = minLng
+        self.maxLng = maxLng
+    }
+
+    /// Empty-array sentinels used by `Array.minMax()`.
+    public static var empty: CoordinateBounds {
+        CoordinateBounds(
+            minLat: .greatestFiniteMagnitude,
+            maxLat: -.greatestFiniteMagnitude,
+            minLng: .greatestFiniteMagnitude,
+            maxLng: -.greatestFiniteMagnitude
+        )
+    }
+}
 
 extension CLLocationCoordinate2D {
     
@@ -45,24 +75,24 @@ extension Array where Element == CLLocationCoordinate2D {
 
     /// Returns the bounding latitudes and longitudes in a single pass.
     ///
-    /// Uses a plain loop instead of `reduce` + `min`/`max` so Swift does not
-    /// fail to type-check the expression under recent Xcode toolchains.
+    /// Uses a named accumulator and a plain loop. The previous `reduce` +
+    /// `min`/`max` expression fails type checking on recent Xcode toolchains
+    /// with "failed to produce diagnostic for expression".
     public func minMax() -> ((minLat: Double, maxLat: Double), (minLng: Double, maxLng: Double)) {
-        var minLat = Double.greatestFiniteMagnitude
-        var maxLat = -Double.greatestFiniteMagnitude
-        var minLng = Double.greatestFiniteMagnitude
-        var maxLng = -Double.greatestFiniteMagnitude
+        var bounds = CoordinateBounds.empty
 
         for coordinate in self {
-            let lat = Double(coordinate.latitude)
-            let lng = Double(coordinate.longitude)
+            let lat: CLLocationDegrees = coordinate.latitude
+            let lng: CLLocationDegrees = coordinate.longitude
 
-            if lat < minLat { minLat = lat }
-            if lat > maxLat { maxLat = lat }
-            if lng < minLng { minLng = lng }
-            if lng > maxLng { maxLng = lng }
+            if lat < bounds.minLat { bounds.minLat = lat }
+            if lat > bounds.maxLat { bounds.maxLat = lat }
+            if lng < bounds.minLng { bounds.minLng = lng }
+            if lng > bounds.maxLng { bounds.maxLng = lng }
         }
 
-        return ((minLat, maxLat), (minLng, maxLng))
+        let latitudes = (minLat: bounds.minLat, maxLat: bounds.maxLat)
+        let longitudes = (minLng: bounds.minLng, maxLng: bounds.maxLng)
+        return (latitudes, longitudes)
     }
 }
