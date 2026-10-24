@@ -6,6 +6,7 @@
 //
 
 // Core iOS
+#if canImport(UIKit)
 import UIKit
 import AVFoundation
 
@@ -76,3 +77,4 @@ extension UIImage {
         return resized.withRenderingMode(.alwaysTemplate)
     }
 }
+#endif

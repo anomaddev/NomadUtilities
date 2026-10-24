@@ -5,6 +5,7 @@
 //  Created by Justin Ackermann on 6/13/24.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension UIEdgeInsets {
@@ -28,4 +29,4 @@ extension UIEdgeInsets {
     { return UIEdgeInsets(top: vertical, left: horizontal, bottom: vertical, right: horizontal) }
     
 }
-
+#endif

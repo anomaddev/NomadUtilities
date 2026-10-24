@@ -5,6 +5,7 @@
 //  Created by Justin Ackermann on 7/14/24.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 extension UIStackView {
@@ -14,3 +15,4 @@ extension UIStackView {
     { arrangedSubviews.forEach { $0.removeFromSuperview() }}
     
 }
+#endif

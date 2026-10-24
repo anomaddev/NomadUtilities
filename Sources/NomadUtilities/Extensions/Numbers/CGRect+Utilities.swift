@@ -5,7 +5,8 @@
 //  Created by Justin Ackermann on 6/26/24.
 //
 
-import UIKit
+import Foundation
+import CoreGraphics
 
 extension CGRect {
     
