@@ -6,7 +6,9 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
 
 extension Encodable {
     
@@ -34,6 +36,7 @@ extension Encodable {
     }
 }
 
+#if canImport(UIKit)
 // MARK: Controllers
 public extension UINavigationController {
     func pushToViewController(_ viewController: UIViewController, animated:Bool = true, completion: @escaping ()->()) {
@@ -64,3 +67,4 @@ public extension UINavigationController {
         CATransaction.commit()
     }
 }
+#endif

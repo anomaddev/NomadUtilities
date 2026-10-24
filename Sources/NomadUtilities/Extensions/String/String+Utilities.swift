@@ -5,8 +5,11 @@
 //  Created by Justin Ackermann on 9/26/23.
 //
 
+import Foundation
+#if canImport(UIKit)
 import UIKit
 import UIColorHexSwift
+#endif
 
 extension String {
     
@@ -37,11 +40,13 @@ extension String {
     public var mutableAttributed: NSMutableAttributedString
     { NSMutableAttributedString(string: self) }
     
+    #if canImport(UIKit)
     // MARK: - Type Conversions
     
     /// outputs a `String` hex code as a `UIColor`
     public var color: UIColor
     { UIColor(self) }
+    #endif
 }
 
 extension Substring.SubSequence {

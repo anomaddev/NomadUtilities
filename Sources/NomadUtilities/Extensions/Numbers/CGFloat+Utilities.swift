@@ -5,7 +5,8 @@
 //  Created by Justin Ackermann on 9/29/24.
 //
 
-import UIKit
+import Foundation
+import CoreGraphics
 
 extension CGFloat {
     

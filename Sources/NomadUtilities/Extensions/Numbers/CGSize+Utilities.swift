@@ -5,7 +5,8 @@
 //  Created by Justin Ackermann on 5/9/24.
 //
 
-import UIKit
+import Foundation
+import CoreGraphics
 
 extension CGSize {
     
